@@ -1,0 +1,5 @@
+# 项目排除路径
+/boot_01_helloworld/target/
+/boot_02_helloworld2/target/
+/boot_03_web01/target/
+/boot_04_web_admin/target/
