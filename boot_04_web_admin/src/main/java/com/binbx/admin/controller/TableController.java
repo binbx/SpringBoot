@@ -23,13 +23,13 @@ public class TableController {
 
     /**
      *
-     * @param a  不带请求参数或者参数类型不对  400；Bad Request  一般都是浏览器的参数没有传递正确
+     * @param a  不带请求参数或者参数类型不对 报400；Bad Request  一般都是浏览器的参数没有传递正确
      * @return
      */
     @GetMapping("/basic_table")
-    public String basic_table(/*@RequestParam("a") int a*/){
+    public String basic_table(@RequestParam("a") int a){
 
-    //    int i = 10/0;
+        int i = 10/0;
         return "table/basic_table";
     }
 
