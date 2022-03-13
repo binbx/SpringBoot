@@ -7,7 +7,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 
 //@MapperScan("com.binbx.admin.mapper")
 @ServletComponentScan(basePackages = "com.binbx.admin")
-@SpringBootApplication(exclude = RedisAutoConfiguration.class)
+@SpringBootApplication/*(exclude = RedisAutoConfiguration.class)*/
 public class Boot04WebAdminApplication {
 
     public static void main(String[] args) {

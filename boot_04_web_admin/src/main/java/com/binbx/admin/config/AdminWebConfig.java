@@ -2,6 +2,7 @@ package com.binbx.admin.config;
 
 import com.binbx.admin.interceptor.LoginInterceptor;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @EnableWebMvc:全面接管
  *      1、静态资源？视图解析器？欢迎页.....全部失效
  */
+//@EnableWebMvc
 @Configuration
 public class AdminWebConfig implements WebMvcConfigurer {
 
@@ -26,7 +28,7 @@ public class AdminWebConfig implements WebMvcConfigurer {
    // RedisUrlCountInterceptor redisUrlCountInterceptor;
 
     /**
-     * 定义静态资源行为
+     * 定义静态资源行为(添加@EnableWebMvc注解就必须定义静态资源行为)
      * @param registry
      */
 //    @Override
