@@ -1,6 +1,8 @@
 package com.binbx.admin.config;
 
 import com.binbx.admin.interceptor.LoginInterceptor;
+import com.binbx.admin.interceptor.RedisUrlCountInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -25,7 +27,7 @@ public class AdminWebConfig implements WebMvcConfigurer {
      *
      */
 //    @Autowired
-   // RedisUrlCountInterceptor redisUrlCountInterceptor;
+    RedisUrlCountInterceptor redisUrlCountInterceptor;
 
     /**
      * 定义静态资源行为(添加@EnableWebMvc注解就必须定义静态资源行为)

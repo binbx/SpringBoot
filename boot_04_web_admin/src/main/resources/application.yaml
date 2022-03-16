@@ -31,8 +31,69 @@ spring:
           config:
             drop-table-allow: false  #不允许删表
 
+  redis:
+    host: 192.168.10.129
+    port: 6381
+    password: 123456
+    client-type: jedis
+    jedis:
+      pool:
+        max-active: 10
+#    lettuce:
+#      pool:
+#        max-active: 10
+#        min-idle: 5
+  #    url: redis://redis-node-1:123456@192.168.10.129:6381
 
   jdbc:
     template:
       # 查询超时
       query-timeout: 3
+  boot:
+    admin:
+      client:
+        url: http://localhost:8888
+        instance:
+          prefer-ip: true  #使用ip注册进来
+    application:
+      name: boot-04-web-admin
+
+
+
+#配置mybatis规则
+#mybatis:
+##  config-location: classpath:mybatis/mybatis-config.xml
+#  mapper-locations: classpath:mybatis/mapper/*.xml
+#  configuration:  # 指定mybatis全局配置文件中的相关配置项
+#    map-underscore-to-camel-case: true  # 映射下划线到驼峰式大小写
+
+
+
+# management 是所有actuator的配置
+# management.endpoint.端点名.xxxx  对某个端点的具体配置
+management:
+  endpoints:
+    enabled-by-default: true  #默认开启所有监控端点  true
+    web:
+      exposure:
+        include: '*' # 以web方式暴露所有端点
+
+  endpoint:   #对某个端点的具体配置
+    health:
+      show-details: always
+      enabled: true
+
+    info:
+      enabled: true
+
+    beans:
+      enabled: true
+
+    metrics:
+      enabled: true
+
+info:
+  appName: boot-admin
+  appVersion: 1.0.0
+  mavenProjectName: @project.artifactId@
+  mavenProjectVersion: @project.version@

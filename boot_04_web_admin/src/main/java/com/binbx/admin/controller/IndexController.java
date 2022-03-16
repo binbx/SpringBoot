@@ -1,9 +1,15 @@
 package com.binbx.admin.controller;
 
+import com.binbx.admin.bean.Account;
+import com.binbx.admin.bean.City;
 import com.binbx.admin.bean.User;
-import io.undertow.security.idm.Account;
+import com.binbx.admin.service.AccountService;
+import com.binbx.admin.service.CityService;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,35 +34,35 @@ public class IndexController {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+    @Autowired
+    AccountService accountService;
+
+    @Autowired
+    CityService cityService;
+
 //    @Autowired
-//    AccountService accountService;
-//
-//    @Autowired
-//    CityService cityService;
-//
-//    //    @Autowired
-//    StringRedisTemplate redisTemplate;
+    StringRedisTemplate redisTemplate;
 
-//    @ResponseBody
-//    @PostMapping("/city")
-//    public City saveCity(City city){
-//
-//        cityService.saveCity(city);
-//        return city;
-//    }
+    //插入
+    @ResponseBody
+    @PostMapping("/city")
+    public City saveCity(City city){
+        cityService.saveCity(city);
+        return city;
+    }
 
-//    @ResponseBody
-//    @GetMapping("/city")
-//    public City getCityById(@RequestParam("id") Long id){
-//        return cityService.getById(id);
-//    }
+    //查询
+    @ResponseBody
+    @GetMapping("/city")
+    public City getCityById(@RequestParam("id") Long id){
+        return cityService.getById(id);
+    }
 
-    /*@ResponseBody
+    @ResponseBody
     @GetMapping("/acct")
     public Account getById(@RequestParam("id") Long id){
-
         return accountService.getAcctByid(id);
-    }*/
+    }
 
     @ResponseBody
     @GetMapping("/sql")
@@ -108,14 +114,14 @@ public class IndexController {
 //        }
 
 
-//        ValueOperations<String, String> opsForValue =
-//                redisTemplate.opsForValue();
-//
-//        String s = opsForValue.get("/main.html");
-//        String s1 = opsForValue.get("/sql");
-//
-//        model.addAttribute("mainCount",s);
-//        model.addAttribute("sqlCount",s1);
+        ValueOperations<String, String> opsForValue =
+                redisTemplate.opsForValue();
+
+        String s = opsForValue.get("/main.html");
+        String s1 = opsForValue.get("/sql");
+
+        model.addAttribute("mainCount",s);
+        model.addAttribute("sqlCount",s1);
 
         return "main";
     }
